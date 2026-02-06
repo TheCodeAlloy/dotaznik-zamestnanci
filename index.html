@@ -205,20 +205,17 @@
             display: none;
             background: #d4edda;
             color: #155724;
-            padding: 40px;
-            border-radius: 10px;
-            margin-top: 20px;
+            padding: 30px;
+            border-radius: 15px;
             border: 2px solid #c3e6cb;
             text-align: center;
             font-weight: bold;
-            font-size: 20px;
+            font-size: 22px;
+            max-width: 600px;
+            margin: 0 auto;
         }
         
-        .success-message p {
-            margin: 10px 0;
-        }
-        
-        .form-hidden {
+        .container-hidden {
             display: none;
         }
         
@@ -250,7 +247,7 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="mainContainer">
         <h1>Evaluační dotazník pro zaměstnance</h1>
         
         <div class="intro">
@@ -842,16 +839,15 @@
             
             <button type="submit" class="submit-btn" id="submitBtn">Odeslat dotazník</button>
             
-            <div class="success-message" id="successMessage">
-                <p style="font-size: 28px; margin-bottom: 20px;">✓ Děkujeme za vyplnění dotazníku!</p>
-                <p style="font-size: 18px; font-weight: normal;">Vaše odpovědi byly úspěšně odeslány.</p>
-                <p style="font-size: 16px; font-weight: normal; margin-top: 20px; color: #6c757d;">Nyní můžete toto okno zavřít.</p>
-            </div>
             
             <div class="error-message" id="errorMessage">
                 ✗ Omlouváme se, při odesílání došlo k chybě. Zkuste to prosím znovu.
             </div>
         </form>
+    </div>
+    
+    <div class="success-message" id="successMessage">
+        ✓ Děkujeme! Váš dotazník byl úspěšně odeslán.
     </div>
     
     <script>
@@ -977,8 +973,8 @@
                     body: JSON.stringify(data)
                 });
                 
-                // Zobrazení úspěšné zprávy a skrytí formuláře
-                document.getElementById('surveyForm').classList.add('form-hidden');
+                // Zobrazení úspěšné zprávy a skrytí celého kontejneru
+                document.getElementById('mainContainer').classList.add('container-hidden');
                 successMessage.style.display = 'block';
                 
                 // Scroll na zprávu
